@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var m=localStorage.getItem("pet.color");document.documentElement.dataset.theme=(m==="light"||m==="dark")?m:"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PetCoinFun">
+<link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Explore pet coins — petcoin.fun</title>
+<meta name="description" content="Explore live pet meme coins: trending, top gainers, about to graduate and newly launched dog, cat and critter coins.">
+</head>
+<body data-page="explore">
+<div id="siteHeader"></div>
+<main>
+  <section style="padding:34px 0 10px">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:18px">
+        <div><span class="kicker">🔭 Explore</span><h2>Discover pet coins</h2><p>Live dog, cat and critter coins on <span data-v="netName"></span>. Real market data, refreshed every minute.</p></div>
+        <a class="btn btn-primary" href="launch.html" data-launch>🚀 Launch Your Pet Coin</a>
+      </div>
+      <div class="stats-row" style="margin-bottom:26px">
+        <div class="stat-grid">
+          <div class="stat"><span class="k"><i class="live-dot"></i>Pet coins live</span><b data-stat="count">…</b></div>
+          <div class="stat"><span class="k">24h volume</span><b data-stat="vol">…</b></div>
+          <div class="stat"><span class="k">Market cap</span><b data-stat="mcap">…</b></div>
+          <div class="stat"><span class="k">24h trades</span><b data-stat="tx">…</b></div>
+          <div class="stat"><span class="k">New in 24h</span><b data-stat="new24">…</b></div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="seg" id="tabs">
+          <button class="active" data-action="tab" data-tab="trending">🔥 Trending</button>
+          <button data-action="tab" data-tab="gainers">📈 Gainers</button>
+          <button data-action="tab" data-tab="graduating">🎓 Graduating</button>
+          <button data-action="tab" data-tab="newest">✨ New</button>
+        </div>
+        <div class="search-wrap"><input class="search" id="search" type="search" placeholder="Search name, ticker or CA…" aria-label="Search pet coins"></div>
+      </div>
+      <div class="toolbar">
+        <div class="filters" id="chainChips"></div>
+        <div class="filters">
+          <select class="select" id="sortSel" aria-label="Sort by">
+            <option value="">Sort: tab default</option>
+            <option value="vol24">24h volume</option>
+            <option value="mcap">Market cap</option>
+            <option value="chg24">24h change</option>
+            <option value="liq">Liquidity</option>
+            <option value="progress">Curve progress</option>
+            <option value="created">Launch time</option>
+          </select>
+          <select class="select" id="orderSel" aria-label="Order"><option value="desc">DESC</option><option value="asc">ASC</option></select>
+        </div>
+      </div>
+      <div class="filters" id="catChips" style="margin-bottom:22px"></div>
+
+      <div class="token-grid" id="tokenGrid"><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+      <div style="text-align:center;margin-top:24px"><button class="btn" id="moreBtn" data-action="more" hidden>Show more pets 🐾</button></div>
+      <p class="data-note" id="dataNote">Progress = market cap ÷ <span data-v="gradCap"></span> graduation cap · 🎓 = past the cap · DexScreener data · Not financial advice.</p>
+    </div>
+  </section>
+
+  <section id="new">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="kicker">✨ Fresh litter</span><h2>Recently launched</h2><p>The newest pet coins to hit the market. Check the CA before you ape.</p></div></div>
+      <div class="new-list" id="newList"><div class="loading-state">Sniffing the chain…</div></div>
+    </div>
+  </section>
+
+  <section id="communities" style="padding-top:10px">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="kicker">🏆 Leaderboard</span><h2>Top pet communities</h2><p>Dogs vs cats vs everyone else — which pack is winning today?</p></div></div>
+      <div class="comm-grid" id="commGrid"><div class="loading-state">Counting paws…</div></div>
+    </div>
+  </section>
+</main>
+<div id="siteFooter"></div>
+<script src="js/config.js"></script>
+<script src="js/chain.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/common.js"></script>
+<script src="js/market.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/explore.js"></script>
+</body>
+</html>

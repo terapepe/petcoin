@@ -38,6 +38,11 @@ window.PET_CONFIG = {
   /** Link app launchpad. "" = nút Launch hiển thị "Opening soon" */
   launchpad: {
     appUrl: "",
+    /** Mức phí giao dịch người tạo được chọn (buy = sell, %) */
+    feeTiers: [0.5, 1, 2, 3, 5],
+    defaultFee: 1,
+    /** Chia phí giao dịch (% của phí) */
+    feeSplit: { treasury: 50, owner: 30, pawPool: 20 },
     /** Market cap (USD) để token "tốt nghiệp" bonding curve → DEX. Dùng để tính thanh tiến trình. */
     graduationMcapUsd: 69000,
   },
@@ -60,8 +65,10 @@ window.PET_CONFIG = {
     ],
   },
 
-  /** Theme chế độ multi */
-  theme: { accent: "#ffd23f", accent2: "#ff8a3d", accent3: "#8b5cf6", accent4: "#5ff2c0", ink: "#1a1423", bg: "#fff8ec" },
+  /** Theme chế độ multi (primary = màu chính, accent = màu gradient, onPrimary = chữ trên nút chính). Giao diện sáng/tối do người dùng bật tắt, mặc định: */
+  defaultColorMode: "dark",
+
+  theme: { primary: "#8b5cf6", accent: "#2dd4bf", warm: "#ffb547", onPrimary: "#ffffff" },
 
   networks: {
     solana: {
@@ -81,7 +88,7 @@ window.PET_CONFIG = {
       tokenStd: "SPL token",
       color: "#9945FF",
       icon: "assets/networks/solana.svg",
-      theme: { accent: "#5ff2c0", accent2: "#ff8a3d", accent3: "#9945ff", accent4: "#ffd23f", ink: "#170f2a", bg: "#f6f1ff" },
+      theme: { primary: "#9945ff", accent: "#14f195", warm: "#ffb547", onPrimary: "#ffffff" },
       fees: { launch: "0.02 SOL", campaign: "0.01 SOL", graduation: "1.5 SOL" },
     },
     robinhood: {
@@ -103,7 +110,7 @@ window.PET_CONFIG = {
       tokenStd: "ERC-20",
       color: "#CCFF00",
       icon: "assets/networks/robinhood.svg",
-      theme: { accent: "#ccff00", accent2: "#3ddc84", accent3: "#8b5cf6", accent4: "#ffd23f", ink: "#0e1a06", bg: "#f7fbe9" },
+      theme: { primary: "#a3e635", accent: "#ccff00", warm: "#ffb547", onPrimary: "#0b1400" },
       fees: { launch: "0.001 ETH", campaign: "0.0005 ETH", graduation: "0.08 ETH" },
     },
     base: {
@@ -125,7 +132,7 @@ window.PET_CONFIG = {
       tokenStd: "ERC-20",
       color: "#0052FF",
       icon: "assets/networks/base.svg",
-      theme: { accent: "#7fb0ff", accent2: "#ff8a3d", accent3: "#0052ff", accent4: "#5ff2c0", ink: "#0a1638", bg: "#f0f5ff" },
+      theme: { primary: "#0052ff", accent: "#5b9bff", warm: "#ffb547", onPrimary: "#ffffff" },
       fees: { launch: "0.001 ETH", campaign: "0.0005 ETH", graduation: "0.08 ETH" },
     },
     bsc: {
@@ -147,7 +154,7 @@ window.PET_CONFIG = {
       tokenStd: "BEP-20",
       color: "#F0B90B",
       icon: "assets/networks/bsc.svg",
-      theme: { accent: "#f0b90b", accent2: "#ff8a3d", accent3: "#8b5cf6", accent4: "#5ff2c0", ink: "#1e1600", bg: "#fffaea" },
+      theme: { primary: "#f0b90b", accent: "#ffd84d", warm: "#ff8a3d", onPrimary: "#1e1600" },
       fees: { launch: "0.005 BNB", campaign: "0.003 BNB", graduation: "0.3 BNB" },
     },
   },
@@ -159,7 +166,7 @@ window.PET_CONFIG = {
    */
   fees: [
     { name: "Pet coin creation", value: "net:launch", note: "One-time fee to deploy a pet coin on the bonding curve. Pay in $PET for 50% off." },
-    { name: "Bonding curve trade", value: "1%", note: "Per buy/sell on the curve. Split: 0.5% treasury & $PET buyback · 0.3% pet owner · 0.2% Paw Pool rewards." },
+    { name: "Trading fee (buy = sell)", value: "tiers", note: "Chosen by the creator at launch: 0.5%, 1%, 2%, 3% or 5%, same rate for buys and sells. Split: 50% treasury & $PET buyback · 30% pet owner · 20% Paw Pool." },
     { name: "Memeify campaign", value: "net:campaign", note: "Opens a 72h voting campaign for your pet's moment. Refunded in $PET if your pet makes the Top 10." },
     { name: "Graduation (DEX listing)", value: "net:graduation", note: "Taken from curve liquidity when a coin hits the graduation cap. Remaining liquidity is locked & LP burned." },
     { name: "Vote stake", value: "Min 100 $PET", note: "Staked, not spent. Unlocks when the campaign ends. Winning voters share the Paw Pool." },

@@ -1,35 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Docs — petcoin.fun | How to Memeify, launch & earn with $PET</title>
-<meta name="description" content="petcoin.fun documentation: getting started, Memeify campaigns, launching a pet coin, bonding curve, $PET tokenomics, fees, Meme-to-Earn and safety.">
+<script>try{var m=localStorage.getItem("pet.color");document.documentElement.dataset.theme=(m==="light"||m==="dark")?m:"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PetCoinFun">
 <link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<title>Docs — petcoin.fun | How to Memeify, launch & earn with $PET</title>
+<meta name="description" content="petcoin.fun documentation: getting started, Memeify campaigns, launching a pet coin, bonding curve, $PET tokenomics, fees, Meme-to-Earn and safety.">
 </head>
-<body>
-<div class="topbar"><div class="marquee" id="marquee"></div></div>
-<header class="header">
-  <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
-    <nav class="nav" id="nav">
-      <a href="index.html#explore">Explore</a>
-      <a href="index.html#memeify">Memeify</a>
-      <a href="index.html#token">$PET</a>
-      <a href="index.html#fees">Fees</a>
-      <a href="docs.html" class="active">Docs</a>
-    </nav>
-    <div class="head-actions">
-      <span class="net-badge" id="netBadge"></span>
-      <button class="btn btn-primary btn-sm" id="walletBtn" data-action="open-connect">Connect</button>
-      <button class="menu-btn" data-action="toggle-nav" aria-label="Menu">☰</button>
-    </div>
-  </div>
-</header>
+<body data-page="docs">
+<div id="siteHeader"></div>
 
 <div class="wrap docs">
   <aside class="docs-nav" id="docsNav">
@@ -67,7 +53,7 @@
       <ul>
         <li><b>Real pets, real owners.</b> Coins are tied to verified pet owners, not stolen images.</li>
         <li><b>Fair launch.</b> Every pet coin starts on a bonding curve — no presale, no team allocation.</li>
-        <li><b>Owners get paid.</b> 0.3% of every curve trade on a pet's coin goes to its owner.</li>
+        <li><b>Owners get paid.</b> 30% of every trading fee on a pet's coin goes to its owner.</li>
         <li><b>Community-first.</b> Voters who back winners share the Paw Pool.</li>
       </ul>
     </article>
@@ -79,7 +65,7 @@
       <h3>2. Fund it</h3>
       <p>Buy {native} on an exchange and withdraw it to your wallet on the correct network ({netName}). Keep a little extra for gas.</p>
       <h3>3. Connect to petcoin.fun</h3>
-      <p>Click <b>Connect</b> in the top-right corner, pick your network and wallet, and approve the connection. Your {ticker} balance is read live from the chain.</p>
+      <p>Click <b>Connect Wallet</b> in the top-right corner, pick your network and wallet, and approve the connection. Your {ticker} balance is read live from the chain.</p>
       <h3>4. Get {ticker}</h3>
       <p>Click <b>Copy CA</b> on the homepage, paste the address into {aggregator} and swap. We intentionally never show a "Buy" button — always paste the official CA yourself.</p>
       <div class="callout warn">⚠️ Always double-check the network. Sending tokens on the wrong chain can lose them permanently.</div>
@@ -121,9 +107,10 @@
       <h2>🪄 Launching a pet coin</h2>
       <p>Any verified pet can get its own coin. Campaign winners get a featured launch slot on the homepage.</p>
       <ol>
-        <li>Open the launchpad and pick your verified pet.</li>
+        <li>Open <a href="launch.html">Launch</a>, connect your wallet and upload your verified pet.</li>
         <li>Set <b>name</b>, <b>ticker</b>, image and links (X, Telegram, website).</li>
-        <li>Choose the network ({netShort}) and pay the creation fee: <b>{launchFee}</b> + gas. Pay in {ticker} for 50% off.</li>
+        <li>Choose the network ({netShort}) and a <b>trading fee: 0.5%, 1%, 2%, 3% or 5%</b> — the same rate for buys and sells. It cannot be raised after launch.</li>
+        <li>Pay the creation fee: <b>{launchFee}</b> + gas. Pay in {ticker} for 50% off.</li>
         <li>Optional: make the first buy in the same transaction to avoid snipers.</li>
         <li>Your coin is live on the bonding curve instantly. Share the page!</li>
       </ol>
@@ -173,18 +160,18 @@
       <h2>💸 Fees</h2>
       <p>Fees are in line with other meme launchpads. Native-currency fees are per network.</p>
       <table><thead><tr><th>Action</th><th>Fee</th><th>Details</th></tr></thead><tbody id="feeTable"></tbody></table>
-      <h3>Curve trade fee split (1%)</h3>
+      <h3>Trading fee split</h3><p>The creator picks one rate at launch — <b>0.5%, 1%, 2%, 3% or 5%</b> — applied equally to buys and sells. Every fee is split:</p>
       <table><thead><tr><th>Recipient</th><th>Share</th></tr></thead><tbody>
-        <tr><td>Treasury & {ticker} buyback/burn</td><td>0.5%</td></tr>
-        <tr><td>Pet owner</td><td>0.3%</td></tr>
-        <tr><td>Paw Pool (owners, voters, shelters)</td><td>0.2%</td></tr>
+        <tr><td>Treasury & {ticker} buyback/burn</td><td>50% of the fee</td></tr>
+        <tr><td>Pet owner</td><td>30% of the fee</td></tr>
+        <tr><td>Paw Pool (owners, voters, shelters)</td><td>20% of the fee</td></tr>
       </tbody></table>
     </article>
 
     <article id="earn">
       <h2>🦴 Meme-to-Earn</h2>
       <h3>Pet owners</h3>
-      <ul><li>0.3% of every bonding-curve trade on their pet's coin, claimable any time.</li><li>Paw Pool rewards when their pet makes the seasonal Top 10.</li><li>3% royalty on their pet's NFT Meme collection.</li></ul>
+      <ul><li>30% of every trading fee on their pet's coin (e.g. 0.3% per trade at a 1% fee), claimable any time.</li><li>Paw Pool rewards when their pet makes the seasonal Top 10.</li><li>3% royalty on their pet's NFT Meme collection.</li></ul>
       <h3>Voters</h3>
       <ul><li>Share 50% of the seasonal Paw Pool when backing Top 10 pets.</li><li>Stake is never spent.</li></ul>
       <h3>{ticker} holders</h3>
@@ -206,7 +193,7 @@
 
     <article id="data">
       <h2>📊 Market data</h2>
-      <p>The Explore, Recently launched, Communities and Stats sections use live public data from the <b>DexScreener API</b>, filtered to pet-themed tokens (dog, cat, inu, kitty, hamster…) on {netName} with at least $3K liquidity. Data refreshes every 60 seconds.</p>
+      <p>The Explore page, homepage trending/new sections, top ticker and stats use live public data from the <b>DexScreener API</b>, filtered to pet-themed tokens (dog, cat, inu, kitty, hamster…) on {netName} with at least $3K liquidity. Data refreshes every 60 seconds.</p>
       <p>{ticker} supply and wallet balances are read directly on-chain through public RPC endpoints.</p>
     </article>
 
@@ -234,19 +221,7 @@
   </div>
 </div>
 
-<footer class="footer">
-  <div class="wrap">
-    <div><a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a><p style="color:#cfc6dc;margin-top:12px">The pet meme coin launchpad.</p></div>
-    <div><h4>Platform</h4><a href="index.html#explore">Explore</a><a href="index.html#memeify">Memeify</a><a href="index.html#fees">Fees</a></div>
-    <div><h4>Docs</h4><a href="#start">Getting started</a><a href="#launch">Launch</a><a href="#token">$PET</a></div>
-    <div><h4>Community</h4><a href="#" data-x-link target="_blank" rel="noopener">X <span data-x-handle></span></a><a href="#" data-tg-link target="_blank" rel="noopener" hidden>Telegram</a></div>
-    <div class="disc">© <span data-year></span> petcoin.fun · $PET is a community meme token with no intrinsic value or expectation of financial return. DYOR.</div>
-  </div>
-</footer>
-
-<div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-x" data-action="close-modal" aria-label="Close">×</button><div id="modalBody"></div></div></div>
-<div class="toast" id="toast" hidden></div>
-
+<div id="siteFooter"></div>
 <script src="js/config.js"></script>
 <script src="js/chain.js"></script>
 <script src="js/wallet.js"></script>

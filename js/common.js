@@ -72,7 +72,7 @@
       body.dataset.mode = single ? "single" : "multi";
       body.dataset.net = single ? n.id : "";
       const th = { ...CFG.theme, ...(single ? n.theme : {}) };
-      [["--yellow", th.accent],["--accent", th.accent], ["--orange", th.accent2], ["--purple", th.accent3], ["--mint", th.accent4], ["--ink", th.ink], ["--bg", th.bg]]
+      [["--primary", th.primary], ["--accent", th.accent], ["--warm", th.warm], ["--on-primary", th.onPrimary]]
         .forEach(([k, v]) => v && body.style.setProperty(k, v));
       $$("[data-show]").forEach((el) => (el.hidden = el.dataset.show !== (single ? "single" : "multi")));
       const v = UI.vars();
@@ -82,23 +82,74 @@
       $$("[data-tpl]").forEach((el) => (el.innerHTML = fill(el.innerHTML)));
     },
 
+    /** Shared header / footer / modal markup for every page. */
+    renderShell() {
+      const page = document.body.dataset.page || "home";
+      const nav = [["index.html", "Home", "home"], ["explore.html", "Explore", "explore"], ["launch.html", "Launch", "launch"], ["index.html#token", "$PET", "token"], ["index.html#fees", "Fees", "fees"], ["docs.html", "Docs", "docs"]];
+      const head = $("#siteHeader");
+      if (head) head.outerHTML = `<div class="topbar"><div class="marquee" id="marquee"></div></div>
+        <header class="header"><div class="wrap">
+          <a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
+          <nav class="nav" id="nav">${nav.map(([h, t, id]) => `<a href="${h}" class="${id === page ? "active" : ""}">${t}</a>`).join("")}</nav>
+          <div class="head-actions">
+            <span class="net-badge" id="netBadge"></span>
+            <button class="icon-btn" id="themeBtn" data-action="toggle-theme" aria-label="Toggle light / dark mode"></button>
+            <button class="btn btn-primary btn-sm" id="walletBtn" data-action="open-connect">Connect Wallet</button>
+            <button class="icon-btn menu-btn" data-action="toggle-nav" aria-label="Menu">☰</button>
+          </div>
+        </div></header>`;
+      const foot = $("#siteFooter");
+      if (foot) foot.outerHTML = `<footer class="footer"><div class="wrap">
+          <div><a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
+            <p class="muted" style="margin-top:12px">The pet meme coin launchpad. Vote · Launch · Earn with ${esc(CFG.project.ticker)} on <span data-v="netName"></span>.</p></div>
+          <div><h4>Platform</h4><a href="explore.html">Explore</a><a href="launch.html">Launch a pet coin</a><a href="index.html#memeify">Memeify</a><a href="index.html#fees">Fees</a></div>
+          <div><h4>Learn</h4><a href="docs.html">Docs</a><a href="docs.html#start">Getting started</a><a href="docs.html#token">${esc(CFG.project.ticker)} token</a><a href="docs.html#safety">Safety</a></div>
+          <div><h4>Community</h4><a href="#" data-x-link target="_blank" rel="noopener">X <span data-x-handle></span></a><a href="#" data-tg-link target="_blank" rel="noopener" hidden>Telegram</a><a href="#" data-action="open-copy">Copy ${esc(CFG.project.ticker)} CA</a></div>
+          <div class="disc">© <span data-year></span> petcoin.fun · ${esc(CFG.project.ticker)} is a community meme token with no intrinsic value or expectation of financial return. Pet coins shown on this site are third-party tokens from public market data, not endorsements. Crypto is risky — DYOR.</div>
+        </div></footer>
+        <div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-x" data-action="close-modal" aria-label="Close">×</button><div id="modalBody"></div></div></div>
+        <div class="toast" id="toast" hidden></div>`;
+    },
+
+    /* ---------- Light / dark ---------- */
+    colorMode() {
+      let m; try { m = localStorage.getItem("pet.color"); } catch {}
+      return m === "light" || m === "dark" ? m : (CFG.defaultColorMode || "dark");
+    },
+    setColorMode(m, save) {
+      document.documentElement.dataset.theme = m;
+      if (save) { try { localStorage.setItem("pet.color", m); } catch {} }
+      const b = $("#themeBtn"); if (b) { b.textContent = m === "dark" ? "☀" : "☾"; b.title = m === "dark" ? "Light mode" : "Dark mode"; }
+    },
+
     renderChrome() {
       const nets = Chain.list();
       const badge = $("#netBadge");
       if (badge) badge.innerHTML = nets.length === 1
         ? `<img src="${nets[0].icon}" alt="">${esc(nets[0].short)}`
         : `<span class="stack">${nets.map((n) => `<img src="${n.icon}" alt="${esc(n.short)}">`).join("")}</span>${nets.length} chains`;
-      const mq = $("#marquee");
-      if (mq) {
-        const words = [CFG.project.ticker, "MEMEIFY YOUR PET", ...nets.map((n) => n.name.toUpperCase()), "VOTE · LAUNCH · EARN", "GOOD BOYS ONLY", "PAW POOL", "CAT CLUB", "DOG PACK"];
-        const line = words.map((w) => `<span>${esc(w)}</span><img src="assets/art/logo.svg" alt="">`).join("");
-        mq.innerHTML = line + line;
-      }
+      UI.setTicker(null);
       $$("[data-x-link]").forEach((a) => (a.href = CFG.social.x));
       $$("[data-x-handle]").forEach((s) => (s.textContent = CFG.social.xHandle));
       if (CFG.social.telegram) $$("[data-tg-link]").forEach((a) => { a.href = CFG.social.telegram; a.hidden = false; });
       $$("[data-year]").forEach((s) => (s.textContent = new Date().getFullYear()));
-      $$("[data-launch]").forEach((a) => { if (CFG.launchpad.appUrl) { a.href = CFG.launchpad.appUrl; a.target = "_blank"; delete a.dataset.action; } });
+      if (CFG.launchpad.appUrl) $$("[data-launch]").forEach((a) => { a.href = CFG.launchpad.appUrl; a.target = "_blank"; });
+    },
+
+    /** Top ticker: live pet coins (real data) or brand words while loading. */
+    setTicker(tokens) {
+      const mq = $("#marquee"); if (!mq) return;
+      let items;
+      if (tokens && tokens.length) {
+        items = tokens.slice(0, 16).map((t) => {
+          const n = Chain.get(t.net), c = t.chg24;
+          return `<span><img src="${esc(t.image || n.icon)}" alt="" onerror="this.src='${n.icon}'"><b>$${esc(t.symbol)}</b> ${price(t.price)}${c !== null ? ` <i class="${c >= 0 ? "up" : "down"}">${c >= 0 ? "▲" : "▼"}${Math.abs(c).toFixed(1)}%</i>` : ""} <span class="muted">· vol ${usd(t.vol24)}</span></span>`;
+        });
+      } else {
+        items = [CFG.project.ticker, "Memeify your pet", ...Chain.list().map((n) => n.name), "Vote · Launch · Earn", "Paw Pool", "Dog Pack vs Cat Club"]
+          .map((w) => `<span><img src="assets/art/logo.svg" alt="">${esc(w)}</span>`);
+      }
+      mq.innerHTML = items.join("") + items.join("");
     },
 
     /* ---------- CA box (hero) ---------- */
@@ -148,17 +199,14 @@
         <div class="notice">Only trust the CA shown here and on ${esc(CFG.social.xHandle)}.</div>`;
     },
 
-    launchModal() {
+    /** Shown after a connected wallet presses Launch. `d` = form summary. */
+    launchModal(d = {}) {
       const v = UI.vars();
-      return `<h3>🚀 Launchpad opening soon</h3>
-        <p class="sub">The petcoin.fun launchpad is being built. Here is how launching will work on ${esc(v.netName)}:</p>
-        <ol>
-          <li><b>Upload your pet</b> — photo, name, ticker and a short story.</li>
-          <li><b>Pay the creation fee</b> — ${esc(v.launchFee)} (50% off when paid in ${esc(CFG.project.ticker)}).</li>
-          <li><b>Trade on the bonding curve</b> — fair launch, no presale, no team bags.</li>
-          <li><b>Graduate</b> at ${esc(v.gradCap)} market cap → liquidity moves to ${esc(v.dex)} and LP is burned.</li>
-        </ol>
-        <div class="row-actions"><a class="btn btn-primary" href="${esc(CFG.social.x)}" target="_blank" rel="noopener">Follow ${esc(CFG.social.xHandle)} for launch day</a><a class="btn" href="docs.html#launch">Read the docs</a></div>`;
+      return `<div class="modal-hero"><div class="big">🚀</div><h3>Launchpad opening soon</h3>
+        <p class="sub">Your pet coin ${d.name ? `<b>${esc(d.name)} ($${esc(d.ticker)})</b> ` : ""}is ready to go — the petcoin.fun launchpad contracts are not live yet.</p></div>
+        ${d.name ? `<div class="param"><span>Network</span><b>${esc(d.net)}</b></div><div class="param"><span>Trading fee (buy = sell)</span><b>${esc(d.fee)}%</b></div><div class="param"><span>Creation fee</span><b>${esc(d.cost)}</b></div>` : ""}
+        <div class="notice">Nothing was sent and no transaction was signed. Follow ${esc(CFG.social.xHandle)} to launch on day one on ${esc(v.netName)}.</div>
+        <div class="row-actions"><a class="btn btn-primary" href="${esc(CFG.social.x)}" target="_blank" rel="noopener">Follow ${esc(CFG.social.xHandle)}</a><button class="btn" data-action="close-modal">Keep editing</button></div>`;
     },
 
     /* ---------- Wallet ---------- */
@@ -190,7 +238,7 @@
     },
     updateWalletBtn() {
       const w = Wallet.state, btn = $("#walletBtn"); if (!btn) return;
-      if (!w.connected) { btn.textContent = "Connect"; btn.dataset.action = "open-connect"; return; }
+      if (!w.connected) { btn.textContent = "Connect Wallet"; btn.dataset.action = "open-connect"; return; }
       const n = Chain.get(w.network);
       btn.dataset.action = "open-account";
       btn.innerHTML = `<span class="wallet-chip">${n ? `<img src="${n.icon}" alt="">` : "⚠"}${esc(short(w.address, 4, 4))}</span>`;
@@ -209,7 +257,7 @@
           if (Chain.isSingle()) { const ca = Chain.ca(Chain.primary()); return ca ? UI.copy(ca) : UI.toast("CA coming soon"); }
           return UI.openModal(UI.copyModal());
         }
-        case "open-launch": return UI.openModal(UI.launchModal());
+        case "toggle-theme": return UI.setColorMode(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true);
         case "open-connect": return UI.openModal(UI.connectModal(Wallet.state.network || Chain.primary()));
         case "pick-net": return ($("#modalBody").innerHTML = UI.connectModal(el.dataset.net));
         case "open-account": return UI.openModal(UI.accountModal());
@@ -229,6 +277,8 @@
     },
 
     init() {
+      UI.renderShell();
+      UI.setColorMode(UI.colorMode());
       UI.applyMode();
       UI.renderChrome();
       UI.renderCA();

@@ -21,7 +21,8 @@
 
   $("#feeTable").innerHTML = CFG.fees.map((f) => {
     let v = f.value;
-    if (String(v).startsWith("net:")) { const k = v.slice(4); v = nets.map((n) => (nets.length > 1 ? n.short + ": " : "") + n.fees[k]).join(" · "); }
+    if (v === "tiers") v = CFG.launchpad.feeTiers.map((x) => x + "%").join(" · ");
+    else if (String(v).startsWith("net:")) { const k = v.slice(4); v = nets.map((n) => (nets.length > 1 ? n.short + ": " : "") + n.fees[k]).join(" · "); }
     return `<tr><td><b>${esc(f.name)}</b></td><td>${esc(v)}</td><td>${esc(f.note)}</td></tr>`;
   }).join("");
 

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var m=localStorage.getItem("pet.color");document.documentElement.dataset.theme=(m==="light"||m==="dark")?m:"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PetCoinFun">
+<link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Launch your pet coin — petcoin.fun</title>
+<meta name="description" content="Launch a pet meme coin in seconds. Upload your pet, pick a network and a trading fee from 0.5% to 5%. No coding required.">
+</head>
+<body data-page="launch">
+<div id="siteHeader"></div>
+<main class="wrap launch">
+  <form class="form-card" id="launchForm" novalidate>
+    <span class="kicker">🚀 Launch</span>
+    <h1 style="margin-top:12px">Launch your <span class="grad-text">pet coin</span></h1>
+    <p class="muted">Fair launch on a bonding curve. No presale, no team allocation, no coding.</p>
+
+    <div class="fgrid" style="margin-top:22px">
+      <div class="field full">
+        <label>Pet image <span class="muted">PNG, JPG, GIF, WEBP · max 4 MB</span></label>
+        <label class="drop" id="drop" for="fImg">
+          <span class="pv" id="pv">🐾</span>
+          <span><b style="color:var(--text)">Drop your pet's best photo</b><br><span class="muted small">or click to browse. Square images look best.</span></span>
+        </label>
+        <input type="file" id="fImg" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+      </div>
+      <div class="field"><label for="fName">Coin name <span class="muted" id="cName">0/32</span></label><input class="input" id="fName" maxlength="32" placeholder="e.g. Biscuit the Corgi" autocomplete="off"></div>
+      <div class="field"><label for="fTicker">Ticker <span class="muted">max 10</span></label><div class="input-pre"><span>$</span><input class="input" id="fTicker" maxlength="10" placeholder="BISCUIT" autocomplete="off"></div></div>
+      <div class="field full"><label for="fDesc">Pet story <span class="muted" id="cDesc">0/280</span></label><textarea class="textarea" id="fDesc" maxlength="280" placeholder="Who is your pet and why is it the goodest meme on-chain?"></textarea></div>
+      <div class="field full"><label>Pet type</label><div class="opt-grid" id="petType"></div></div>
+      <div class="field full"><label>Network</label><div class="opt-grid" id="netOpts"></div></div>
+      <div class="field full"><label>Trading fee <span class="muted">same rate for buy &amp; sell</span></label><div class="opt-grid" id="feeOpts"></div></div>
+      <div class="field full"><label>Pay creation fee with</label><div class="opt-grid" id="payOpts"></div></div>
+      <div class="field full">
+        <details class="adv"><summary>+ Socials &amp; first buy (optional)</summary>
+          <div class="fgrid" style="margin-top:12px">
+            <div class="field"><label for="fX">X (Twitter)</label><input class="input" id="fX" placeholder="https://x.com/yourpet"></div>
+            <div class="field"><label for="fTg">Telegram</label><input class="input" id="fTg" placeholder="https://t.me/yourpet"></div>
+            <div class="field"><label for="fWeb">Website</label><input class="input" id="fWeb" placeholder="https://"></div>
+            <div class="field"><label for="fBuy">First buy <span class="muted" id="buyUnit"></span></label><input class="input" id="fBuy" type="number" min="0" step="any" placeholder="0"></div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="form-foot">
+      <div class="cost">Creation fee: <b id="costVal">—</b> + gas<br><span class="muted small" id="walletHint">Connect your wallet to launch.</span></div>
+      <button class="btn btn-primary btn-lg" type="submit" id="launchBtn">🚀 Launch</button>
+    </div>
+  </form>
+
+  <aside class="side-sticky">
+    <div>
+      <p class="muted small" style="margin:0 0 8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Live preview</p>
+      <div id="preview"></div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="callout warn small" style="margin:0">Only launch pets you own. Stolen images and NSFW are removed. <a href="docs.html#launch" style="color:var(--primary)">Read the launch guide →</a></div>
+  </aside>
+</main>
+<div id="siteFooter"></div>
+<script src="js/config.js"></script>
+<script src="js/chain.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/common.js"></script>
+<script src="js/launch.js"></script>
+</body>
+</html>

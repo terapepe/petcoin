@@ -2,7 +2,10 @@
 
 Pet meme coin launchpad website. Static (HTML/CSS/vanilla JS, no build). Networks: **Solana, Robinhood Chain, Base, BSC**.
 
-- **Home** (`index.html`): hero with mascots, CA box (per-chain tabs + network SVG + **Copy CA**, no Buy button), live stats, Trending / Top gainers / About to graduate, Recently launched, Top pet communities, How it works, Memeify, Meme-to-Earn, $PET, Fees, Roadmap, FAQ.
+- **Dark / light mode** toggle (default dark, saved per browser; default in `defaultColorMode`).
+- **Home** (`index.html`): hero + featured trending carousel, CA box (per-chain tabs + network SVG + **Copy CA**, no Buy button), live stats, trending preview, recently launched, How it works, Memeify, Meme-to-Earn, $PET, Fees, Roadmap, FAQ.
+- **Explore** (`explore.html`): Trending / Gainers / Graduating / New tabs, search, chain & pet filters, sort + order, recently launched, top communities.
+- **Launch** (`launch.html`): pet image, name, ticker, story, pet type, network, trading fee (0.5 / 1 / 2 / 3 / 5 %, buy = sell), pay with native or $PET (−50%), socials, first buy, live preview. Requires a connected wallet; until `launchpad.appUrl` is set, pressing Launch shows "Launchpad opening soon".
 - **Docs** (`docs.html`): intro, getting started, networks & CA, Memeify, voting, launching, bonding curve, NFT Meme, $PET, fees, Meme-to-Earn, safety, market data, FAQ, glossary.
 - **Real data only**: pet-coin market from the DexScreener public API; $PET price/liquidity from DexScreener; supply & wallet balance read on-chain via RPC. Nothing configured → "Coming soon" / "—".
 - Wallets: EIP-6963 EVM wallets (auto add/switch Robinhood/Base/BSC) + Phantom / Solflare / Backpack.
@@ -19,13 +22,15 @@ Pet meme coin launchpad website. Static (HTML/CSS/vanilla JS, no build). Network
 | `token.sol` | $PET mint on Solana |
 | `primaryNetwork` | First CA tab in multi mode |
 | `launchpad.appUrl` | Launch app URL ("" → "opening soon" modal) |
+| `launchpad.feeTiers / defaultFee / feeSplit` | Trading-fee options, default and split |
 | `launchpad.graduationMcapUsd` | Graduation cap used for bonding-curve bars |
 | `market.*` | DexScreener keywords, min liquidity, refresh, pet categories |
-| `theme`, `networks.<id>.theme` | Colors (multi / per network) |
+| `theme`, `networks.<id>.theme` | `primary`, `accent`, `warm`, `onPrimary` (multi / per network) |
+| `defaultColorMode` | `dark` \| `light` |
 | `networks.<id>.fees` | Per-network launch / campaign / graduation fees |
 | `fees[]`, `tokenomics[]`, `utility[]`, `roadmap[]` | Content blocks |
 | `social.x / xHandle / telegram` | Social links (Telegram hidden when empty) |
 
 ## Assets
-- `assets/art/*.svg` — original pet mascots (dog, cat, hamster, bunny, parrot) + logo.
+- `assets/art/logo.svg` — minimal paw mark. `assets/art/*.svg` — original pet mascots.
 - `assets/networks/*.svg` — network icons.
