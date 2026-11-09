@@ -26,8 +26,8 @@ window.PET_CONFIG = {
 
   /** $PET CA: Robinhood, Base, BSC share `evm`; Solana uses `sol`. "" = Coming soon */
   token: {
-    evm: "",
-    sol: "",
+    evm: "0xF8C195cd334e6A323F736934ad52A6863afF56EA",
+    sol: "Cc1pq2iZ5fVaeC1GhLAXGEJwDDurMDxjw1FLzgXYE6ea",
   },
 
   /** Launchpad app URL. "" = pressing Launch shows "Launchpad opening soon" */
