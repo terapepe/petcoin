@@ -26,6 +26,10 @@
     return `<tr><td><b>${esc(f.name)}</b></td><td>${esc(v)}</td><td>${esc(f.note)}</td></tr>`;
   }).join("");
 
+  const sp = CFG.launchpad.feeSplit, r = (x, p) => +(x * p / 100).toFixed(3);
+  $("#thCreator").textContent = `Creator (${sp.creator}%)`; $("#thPlatform").textContent = `Platform (${sp.platform}%)`;
+  $("#splitTable").innerHTML = CFG.launchpad.feeTiers.map((x) => `<tr><td>${x}%</td><td>${r(x, sp.creator)}%</td><td>${r(x, sp.platform)}%</td></tr>`).join("");
+
   // Scroll-spy
   const links = $$("#docsNav a");
   const io = new IntersectionObserver((entries) => {

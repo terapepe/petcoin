@@ -36,8 +36,8 @@ window.PET_CONFIG = {
     /** Trading fee options the creator can pick (buy = sell, %) */
     feeTiers: [0.5, 1, 2, 3, 5],
     defaultFee: 1,
-    /** Trading fee split (% of the fee) */
-    feeSplit: { treasury: 50, owner: 30, pawPool: 20 },
+    /** Trading fee split (% of the fee). e.g. 1% fee → 0.8% creator, 0.2% platform */
+    feeSplit: { creator: 80, platform: 20 },
     /** Market cap (USD) at which a coin graduates from the bonding curve to a DEX. Used for progress bars. */
     graduationMcapUsd: 69000,
   },
@@ -153,7 +153,7 @@ window.PET_CONFIG = {
 
   fees: [
     { name: "Pet coin creation", value: "net:launch", note: "One-time fee to deploy a pet coin on the bonding curve. Pay in $PET for 50% off." },
-    { name: "Trading fee (buy = sell)", value: "tiers", note: "Chosen by the creator at launch: 0.5%, 1%, 2%, 3% or 5%, same rate for buys and sells. Split: 50% treasury & $PET buyback · 30% pet owner · 20% Paw Pool." },
+    { name: "Trading fee (buy = sell)", value: "tiers", note: "Chosen by the creator at launch: 0.5%, 1%, 2%, 3% or 5%, same rate for buys and sells. Split: 80% creator · 20% platform (e.g. 1% fee → 0.8% creator, 0.2% platform)." },
     { name: "Memeify campaign", value: "net:campaign", note: "Opens a 72h voting campaign for your pet's moment. Refunded in $PET if your pet makes the Top 10." },
     { name: "Graduation (DEX listing)", value: "net:graduation", note: "Taken from curve liquidity when a coin hits the graduation cap. Remaining liquidity is locked & LP burned." },
     { name: "Vote stake", value: "Min 100 $PET", note: "Staked, not spent. Unlocks when the campaign ends. Winning voters share the Paw Pool." },

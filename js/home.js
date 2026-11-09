@@ -50,9 +50,10 @@
         return `<tr><td>${esc(f.name)}</td><td class="fee-val">${val}</td><td>${esc(f.note)}</td></tr>`;
       }).join("");
       const sp = L.feeSplit;
-      $("#feeSplit").innerHTML = `<div style="flex:${sp.treasury};background:var(--primary);color:var(--on-primary)">${sp.treasury}% Treasury & buyback</div>
-        <div style="flex:${sp.owner};background:color-mix(in srgb,var(--accent) 80%,#000)">${sp.owner}% Pet owner</div>
-        <div style="flex:${sp.pawPool};background:#e8577a">${sp.pawPool}% Paw Pool</div>`;
+      $("#feeSplit").innerHTML = `<div style="flex:${sp.creator};background:var(--primary);color:var(--on-primary)">${sp.creator}% Creator (pet owner)</div>
+        <div style="flex:${sp.platform};background:color-mix(in srgb,var(--accent) 80%,#000)">${sp.platform}% Platform</div>`;
+      const r = (x, p) => +(x * p / 100).toFixed(3);
+      $("#feeTiers").innerHTML = L.feeTiers.map((x) => `<span>${x}% fee → <b>${r(x, sp.creator)}%</b> creator · <b>${r(x, sp.platform)}%</b> platform</span>`).join("");
     },
     renderRoadmap() {
       $("#roadGrid").innerHTML = CFG.roadmap.map((p) => `<div class="phase"><span class="ph">${esc(p.phase)}</span><h3>${esc(p.title)}</h3><ul>${p.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");

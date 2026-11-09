@@ -46,7 +46,8 @@
     $("#summary").innerHTML = `<h4>Launch summary</h4>
       <div class="param"><span>Network</span><b>${esc(n.name)}</b></div>
       <div class="param"><span>Trading fee</span><b>${S.fee}% buy · ${S.fee}% sell</b></div>
-      <div class="param"><span>You earn per trade</span><b>${+(S.fee * sp.owner / 100).toFixed(3)}%</b></div>
+      <div class="param"><span>You earn per trade</span><b>${+(S.fee * sp.creator / 100).toFixed(3)}%</b></div>
+      <div class="param"><span>Platform per trade</span><b>${+(S.fee * sp.platform / 100).toFixed(3)}%</b></div>
       <div class="param"><span>Creation fee</span><b>${esc(cost())}</b></div>
       <div class="param"><span>Graduation</span><b>${esc(UI.vars().gradCap)} → ${esc(n.dex)}</b></div>
       <div class="param"><span>Supply</span><b>1,000,000,000</b></div>`;

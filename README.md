@@ -22,7 +22,7 @@ Pet meme coin launchpad website. Static (HTML/CSS/vanilla JS, no build). Network
 | `token.sol` | $PET mint on Solana |
 | `primaryNetwork` | First CA tab in multi mode |
 | `launchpad.appUrl` | Launch app URL ("" → "opening soon" modal) |
-| `launchpad.feeTiers / defaultFee / feeSplit` | Trading-fee options, default and split |
+| `launchpad.feeTiers / defaultFee / feeSplit` | Trading-fee options, default and split (creator 80 / platform 20) |
 | `launchpad.graduationMcapUsd` | Graduation cap used for bonding-curve bars |
 | `market.*` | DexScreener keywords, min liquidity, refresh, pet categories |
 | `theme`, `networks.<id>.theme` | `primary`, `accent`, `warm`, `onPrimary` (multi / per network) |
