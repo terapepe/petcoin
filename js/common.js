@@ -85,7 +85,7 @@
     /** Shared header / footer / modal markup for every page. */
     renderShell() {
       const page = document.body.dataset.page || "home";
-      const nav = [["./", "Home", "home"], ["explore.html", "Explore", "explore"], ["launch.html", "Launch", "launch"], ["./#token", "$PET", "token"], ["./#fees", "Fees", "fees"], ["docs.html", "Docs", "docs"]];
+      const nav = [["./", "Home", "home"], ["explore", "Explore", "explore"], ["launch", "Launch", "launch"], ["./#token", "$PET", "token"], ["./#fees", "Fees", "fees"], ["docs", "Docs", "docs"]];
       const head = $("#siteHeader");
       if (head) head.outerHTML = `<div class="topbar"><div class="marquee" id="marquee"></div></div>
         <header class="header"><div class="wrap">
@@ -102,8 +102,8 @@
       if (foot) foot.outerHTML = `<footer class="footer"><div class="wrap">
           <div><a class="brand" href="./"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
             <p class="muted" style="margin-top:12px">The pet meme coin launchpad. Vote · Launch · Earn with ${esc(CFG.project.ticker)} on <span data-v="netName"></span>.</p></div>
-          <div><h4>Platform</h4><a href="explore.html">Explore</a><a href="launch.html">Launch a pet coin</a><a href="./#memeify">Memeify</a><a href="./#fees">Fees</a></div>
-          <div><h4>Learn</h4><a href="docs.html">Docs</a><a href="docs.html#start">Getting started</a><a href="docs.html#token">${esc(CFG.project.ticker)} token</a><a href="docs.html#safety">Safety</a></div>
+          <div><h4>Platform</h4><a href="explore">Explore</a><a href="launch">Launch a pet coin</a><a href="./#memeify">Memeify</a><a href="./#fees">Fees</a></div>
+          <div><h4>Learn</h4><a href="docs">Docs</a><a href="docs#start">Getting started</a><a href="docs#token">${esc(CFG.project.ticker)} token</a><a href="docs#safety">Safety</a></div>
           <div><h4>Community</h4><a href="#" data-x-link target="_blank" rel="noopener">X <span data-x-handle></span></a><a href="#" data-tg-link target="_blank" rel="noopener" hidden>Telegram</a><a href="#" data-action="open-copy">Copy ${esc(CFG.project.ticker)} CA</a></div>
           <div class="disc">© <span data-year></span> petcoin.fun · ${esc(CFG.project.ticker)} is a community meme token with no intrinsic value or expectation of financial return. Pet coins shown on this site are third-party tokens from public market data, not endorsements. Crypto is risky — DYOR.</div>
         </div></footer>

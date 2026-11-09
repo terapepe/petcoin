@@ -11,7 +11,9 @@ Pet meme coin launchpad website. Static (HTML/CSS/vanilla JS, no build). Network
 - Wallets: EIP-6963 EVM wallets (auto add/switch Robinhood/Base/BSC) + Phantom / Solflare / Backpack.
 
 ## Run
-`python3 -m http.server` → http://localhost:8000 (works on GitHub Pages / any static host).
+`npx serve` → http://localhost:3000 (serves clean URLs: `/explore`, `/launch`, `/docs`).
+
+Clean URLs (no `.html`): GitHub Pages and Netlify support them out of the box, Vercel via `vercel.json` (`cleanUrls`), Apache / Hostinger via `.htaccess`.
 
 ## Configure — `js/config.js`
 | Key | Purpose |
