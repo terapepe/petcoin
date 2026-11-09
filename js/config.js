@@ -15,9 +15,8 @@ window.PET_CONFIG = {
   },
 
   /**
-   *  mode: "multi"  → always shows all 4 networks: Solana, Robinhood, Base, BSC
-   *        "single" → shows only `singleNetwork` (solana | robinhood | base | bsc)
-   *                   colors, texts, docs and fees follow that network.
+   *"multi"
+   *"single" (solana | robinhood | base | bsc)
    */
   mode: "multi",
   singleNetwork: "solana",
