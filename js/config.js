@@ -1,6 +1,6 @@
 /**
  * petcoin.fun — SITE CONFIG
- * Mọi thay đổi (mạng, CA, phí, link, màu, nội dung) chỉnh tại file này. Không cần build.
+ * Edit everything here (networks, CA, fees, links, colors, content). No build step needed.
  */
 window.PET_CONFIG = {
   project: {
@@ -19,37 +19,37 @@ window.PET_CONFIG = {
   },
 
   /**
-   *  mode: "multi"  → luôn hiển thị đủ 4 mạng: Solana, Robinhood, Base, BSC
-   *        "single" → chỉ hiển thị mạng `singleNetwork` (solana | robinhood | base | bsc)
-   *                   giao diện (màu, text, docs, phí) đổi theo mạng đó.
+   *  mode: "multi"  → always shows all 4 networks: Solana, Robinhood, Base, BSC
+   *        "single" → shows only `singleNetwork` (solana | robinhood | base | bsc)
+   *                   colors, texts, docs and fees follow that network.
    */
   mode: "multi",
   singleNetwork: "solana",
 
-  /** Tab CA mở đầu tiên ở chế độ multi */
+  /** CA tab shown first in multi mode */
   primaryNetwork: "solana",
 
-  /** CA $PET: Robinhood, Base, BSC dùng chung `evm`; Solana dùng `sol`. "" = Coming soon */
+  /** $PET CA: Robinhood, Base, BSC share `evm`; Solana uses `sol`. "" = Coming soon */
   token: {
     evm: "",
     sol: "",
   },
 
-  /** Link app launchpad. "" = nút Launch hiển thị "Opening soon" */
+  /** Launchpad app URL. "" = pressing Launch shows "Launchpad opening soon" */
   launchpad: {
     appUrl: "",
-    /** Mức phí giao dịch người tạo được chọn (buy = sell, %) */
+    /** Trading fee options the creator can pick (buy = sell, %) */
     feeTiers: [0.5, 1, 2, 3, 5],
     defaultFee: 1,
-    /** Chia phí giao dịch (% của phí) */
+    /** Trading fee split (% of the fee) */
     feeSplit: { treasury: 50, owner: 30, pawPool: 20 },
-    /** Market cap (USD) để token "tốt nghiệp" bonding curve → DEX. Dùng để tính thanh tiến trình. */
+    /** Market cap (USD) at which a coin graduates from the bonding curve to a DEX. Used for progress bars. */
     graduationMcapUsd: 69000,
   },
 
   /**
-   * Dữ liệu thị trường thật từ DexScreener (Explore / Trending / New / Stats).
-   * keywords: từ khóa tìm pet coin. categories: nhóm cộng đồng (match theo name/symbol).
+   * Live market data from DexScreener (Explore / Trending / New / Stats).
+   * keywords: search terms for pet coins. categories: community groups (matched on name/symbol).
    */
   market: {
     api: "https://api.dexscreener.com",
@@ -65,9 +65,10 @@ window.PET_CONFIG = {
     ],
   },
 
-  /** Theme chế độ multi (primary = màu chính, accent = màu gradient, onPrimary = chữ trên nút chính). Giao diện sáng/tối do người dùng bật tắt, mặc định: */
+  /** Default color mode ("dark" | "light"). Users can toggle it; their choice is saved in the browser. */
   defaultColorMode: "dark",
 
+  /** Multi-mode colors: primary = main color, accent = gradient color, warm = highlight, onPrimary = text on primary buttons */
   theme: { primary: "#8b5cf6", accent: "#2dd4bf", warm: "#ffb547", onPrimary: "#ffffff" },
 
   networks: {
@@ -160,9 +161,10 @@ window.PET_CONFIG = {
   },
 
   /**
-   * Bảng phí launchpad. value:
-   *   - chuỗi cố định ("1%"), hoặc
-   *   - "net:<key>" → lấy networks.<id>.fees.<key> (multi mode hiển thị từng mạng)
+   * Launchpad fee table. value:
+   *   - a fixed string ("5%"), or
+   *   - "net:<key>" → uses networks.<id>.fees.<key> (multi mode lists every network)
+   *   - "tiers" → lists launchpad.feeTiers
    */
   fees: [
     { name: "Pet coin creation", value: "net:launch", note: "One-time fee to deploy a pet coin on the bonding curve. Pay in $PET for 50% off." },
@@ -173,14 +175,14 @@ window.PET_CONFIG = {
     { name: "NFT Meme mint royalty", value: "5%", note: "On secondary sales: 3% pet owner · 2% Paw Pool." },
   ],
 
-  /** Phân bổ token $PET (hiển thị ở mục Tokenomics). "" = ẩn */
+  /** $PET tokenomics cards. Empty value "" = hidden */
   tokenomics: [
     { label: "Fair launch", value: "100%", note: "No presale, no team allocation" },
     { label: "Buy / Sell tax", value: "0 / 0", note: "Fees come from the launchpad, not the token" },
     { label: "Liquidity", value: "LP burned", note: "After graduation" },
   ],
 
-  /** Utility của $PET */
+  /** $PET utility cards */
   utility: [
     { icon: "🗳️", title: "Vote & stake", text: "Stake $PET to vote in Memeify campaigns. Pick the winner, share the Paw Pool." },
     { icon: "🚀", title: "Pay launch fees", text: "Pay creation and campaign fees in $PET and get 50% off on every network." },
