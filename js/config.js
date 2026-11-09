@@ -1,7 +1,3 @@
-/**
- * petcoin.fun — SITE CONFIG
- * Edit everything here (networks, CA, fees, links, colors, content). No build step needed.
- */
 window.PET_CONFIG = {
   project: {
     brand: "petcoin.fun",
@@ -47,10 +43,6 @@ window.PET_CONFIG = {
     graduationMcapUsd: 69000,
   },
 
-  /**
-   * Live market data from DexScreener (Explore / Trending / New / Stats).
-   * keywords: search terms for pet coins. categories: community groups (matched on name/symbol).
-   */
   market: {
     api: "https://api.dexscreener.com",
     keywords: ["dog", "cat", "inu", "puppy", "kitty", "shiba", "doge", "pup", "meow", "hamster", "bunny", "pet"],
@@ -160,12 +152,6 @@ window.PET_CONFIG = {
     },
   },
 
-  /**
-   * Launchpad fee table. value:
-   *   - a fixed string ("5%"), or
-   *   - "net:<key>" → uses networks.<id>.fees.<key> (multi mode lists every network)
-   *   - "tiers" → lists launchpad.feeTiers
-   */
   fees: [
     { name: "Pet coin creation", value: "net:launch", note: "One-time fee to deploy a pet coin on the bonding curve. Pay in $PET for 50% off." },
     { name: "Trading fee (buy = sell)", value: "tiers", note: "Chosen by the creator at launch: 0.5%, 1%, 2%, 3% or 5%, same rate for buys and sells. Split: 50% treasury & $PET buyback · 30% pet owner · 20% Paw Pool." },
