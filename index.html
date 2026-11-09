@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>petcoin.fun — The Pet Meme Coin Launchpad | $PET</title>
+<meta name="description" content="petcoin.fun turns real pets into meme coins. Memeify your dog or cat, let the community vote, launch on a fair bonding curve and earn $PET when your pet goes viral.">
+<meta property="og:title" content="petcoin.fun — Memeify your pet">
+<meta property="og:description" content="Launch, discover and trade pet meme coins. Vote · Launch · Earn with $PET.">
+<meta property="og:image" content="assets/art/logo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PetCoinFun">
+<link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="topbar"><div class="marquee" id="marquee"></div></div>
+
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
+    <nav class="nav" id="nav">
+      <a href="#explore">Explore</a>
+      <a href="#memeify">Memeify</a>
+      <a href="#token">$PET</a>
+      <a href="#fees">Fees</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="docs.html">Docs</a>
+    </nav>
+    <div class="head-actions">
+      <span class="net-badge" id="netBadge"></span>
+      <button class="btn btn-primary btn-sm" id="walletBtn" data-action="open-connect">Connect</button>
+      <button class="menu-btn" data-action="toggle-nav" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="kicker"><img src="assets/art/logo.svg" alt="">The pet meme launchpad<span class="kick-net"> · <span data-v="netShort"></span></span></span>
+        <h1>Turn your <span class="hl">pet</span> into a <span class="hl hl2">meme coin.</span></h1>
+        <p class="lead">Memeify your dog, cat or hamster. The community votes for the funniest moments, the best pets launch on a fair bonding curve, and viral pet owners earn <b>$PET</b>. Live on <b data-v="netName"></b>.</p>
+        <div class="hero-cta">
+          <a class="btn btn-hot btn-lg" href="#" data-launch data-action="open-launch">🚀 Launch Your Pet Coin</a>
+          <a class="btn btn-lg" href="#explore">🐾 Explore Pet Coins</a>
+        </div>
+
+        <div class="ca-box" id="caBox">
+          <div class="ca-head"><b>Official $PET contract</b><span class="muted small" data-v="caInfo"></span></div>
+          <div class="ca-tabs" id="caTabs" role="tablist"></div>
+          <div class="ca-row">
+            <img class="net-ico" id="caIcon" src="" alt="">
+            <div class="ca-val" id="caValue"></div>
+            <button class="btn btn-primary" id="caCopy" data-action="copy-ca">📋 Copy CA</button>
+          </div>
+          <div class="ca-links" id="caLinks"></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-blob"></div>
+        <img class="mascot m2" src="assets/art/cat.svg" alt="">
+        <img class="mascot m3" src="assets/art/parrot.svg" alt="">
+        <img class="mascot m1" src="assets/art/dog.svg" alt="">
+        <img class="mascot m4" src="assets/art/hamster.svg" alt="">
+        <img class="mascot m5" src="assets/art/bunny.svg" alt="">
+        <span class="sticker s1">Vote 🗳️</span>
+        <span class="sticker s2">Launch 🚀</span>
+        <span class="sticker s3">Earn 🦴</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE STATS -->
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat-grid" id="statGrid">
+        <div class="stat"><span class="k"><i class="live-dot"></i>Pet coins live</span><b data-stat="count">…</b></div>
+        <div class="stat"><span class="k">24h volume</span><b data-stat="vol">…</b></div>
+        <div class="stat"><span class="k">Combined market cap</span><b data-stat="mcap">…</b></div>
+        <div class="stat"><span class="k">24h trades</span><b data-stat="tx">…</b></div>
+        <div class="stat"><span class="k">New in 24h</span><b data-stat="new24">…</b></div>
+      </div>
+      <p class="data-note" id="statsNote">Live pet-coin market across <span data-v="netName"></span> · data from DexScreener.</p>
+    </div>
+  </div>
+
+  <!-- EXPLORE / TRENDING -->
+  <section id="explore">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">🔥 Explore</span>
+          <h2>Trending Pet Coins</h2>
+          <p>The hottest dog, cat and critter coins on-chain right now. Real market data, refreshed every minute.</p>
+        </div>
+        <div class="filters">
+          <input class="search" id="search" type="search" placeholder="Search name or ticker…" aria-label="Search pet coins">
+        </div>
+      </div>
+      <div class="filters" style="margin-bottom:12px" id="sortChips">
+        <button class="chip active" data-action="sort" data-sort="trending">🔥 Trending</button>
+        <button class="chip" data-action="sort" data-sort="gainers">📈 Top gainers</button>
+        <button class="chip" data-action="sort" data-sort="graduating">🎓 About to graduate</button>
+      </div>
+      <div class="filters" style="margin-bottom:22px" id="chainChips" data-show="multi"></div>
+      <div class="filters" style="margin-bottom:22px" id="catChips"></div>
+      <div class="token-grid" id="tokenGrid">
+        <div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel"></div>
+      </div>
+      <div style="text-align:center;margin-top:24px"><button class="btn" id="moreBtn" data-action="more" hidden>Show more pets 🐾</button></div>
+      <p class="data-note">Bonding-curve bar = market cap ÷ <span data-v="gradCap"></span> graduation cap. 🎓 = already past the cap. Not financial advice — always DYOR.</p>
+    </div>
+  </section>
+
+  <!-- RECENTLY LAUNCHED -->
+  <section id="new" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">✨ Fresh litter</span>
+          <h2>Recently launched</h2>
+          <p>The newest pet coins to hit the market. Brand new pups — extra volatile, extra fun. Check the CA before you ape.</p>
+        </div>
+      </div>
+      <div class="new-list" id="newList"><div class="loading-state" style="color:var(--ink)">Sniffing the chain…</div></div>
+    </div>
+  </section>
+
+  <!-- COMMUNITIES -->
+  <section id="communities">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">🏆 Leaderboard</span>
+          <h2>Top pet communities</h2>
+          <p>Dogs vs cats vs everyone else. Which pack is winning the market today?</p>
+        </div>
+      </div>
+      <div class="comm-grid" id="commGrid"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="memeify" class="band-yellow">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">🐾 How it works</span>
+          <h2>From photo to pet coin in 4 steps</h2>
+          <p>No code, no presale, no team bags. Just your pet, a funny moment and a community that loves it.</p>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="ic">📸</div><h3>Memeify</h3><p>Upload your pet's funniest photo or clip and open a 72h Memeify campaign. Fee: <b data-v="campaignFee"></b>.</p></div>
+        <div class="step"><div class="ic">🗳️</div><h3>Community votes</h3><p>Holders stake $PET to vote for the best moments. Top pets climb the Trending board.</p></div>
+        <div class="step"><div class="ic">🚀</div><h3>Launch the coin</h3><p>Winners launch on a fair bonding curve on <b data-v="netShort"></b>. Creation fee: <b data-v="launchFee"></b>.</p></div>
+        <div class="step"><div class="ic">🎓</div><h3>Graduate & earn</h3><p>At <b data-v="gradCap"></b> market cap the coin moves to <b data-v="dex"></b>, LP is burned and the pet owner keeps earning fees.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMEIFY FEATURE -->
+  <section>
+    <div class="wrap feature">
+      <div>
+        <span class="kicker">📸 Memeify campaigns</span>
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);margin-top:12px">Real pets. Real moments. Real memes.</h2>
+        <p>Every pet coin on petcoin.fun starts with a real animal and a real owner — not a stolen image. Owners verify their pet once, then run campaigns for their funniest moments.</p>
+        <ul class="check-list">
+          <li>Verified pet owner badge — one pet, one owner, no copycats</li>
+          <li>Seasonal themes: Zoomies Week, Derp Faces, Costume Contest, Sleepy Bois</li>
+          <li>Top 10 pets each season get their own NFT Meme collection</li>
+          <li>Part of every season's Paw Pool supports animal shelters</li>
+        </ul>
+        <a class="btn btn-purple" href="docs.html#memeify">How Memeify works →</a>
+      </div>
+      <div class="vote-demo">
+        <div class="vh"><span>🗳️ Campaign preview · Zoomies Week</span><span class="muted small">UI preview</span></div>
+        <div class="vote-grid">
+          <div class="vote-card win"><img src="assets/art/dog.svg" alt=""><b>Biscuit</b><span class="tag">🐶 Dog Pack</span></div>
+          <div class="vote-card"><img src="assets/art/cat.svg" alt=""><b>Miso</b><span class="tag">🐱 Cat Club</span></div>
+          <div class="vote-card"><img src="assets/art/hamster.svg" alt=""><b>Nugget</b><span class="tag">🐹 Tiny Paws</span></div>
+          <div class="vote-card"><img src="assets/art/bunny.svg" alt=""><b>Mochi</b><span class="tag">🐰 Tiny Paws</span></div>
+          <div class="vote-card"><img src="assets/art/parrot.svg" alt=""><b>Kiwi</b><span class="tag">🦜 Bird Gang</span></div>
+          <div class="vote-card" style="display:grid;place-items:center;background:var(--mint)"><b style="font-size:1.6rem">+ You?</b><span class="tag">Upload your pet</span></div>
+        </div>
+        <p class="muted small" style="margin:12px 0 0">Mascot illustrations shown for the layout preview. Live campaigns open in Phase 2.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEME TO EARN -->
+  <section id="earn" class="band-purple">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">🦴 Meme-to-Earn</span>
+          <h2>Everyone in the pack gets a treat</h2>
+          <p>Fees from every launch and trade flow back to the people who make pet culture: owners, voters and holders.</p>
+        </div>
+      </div>
+      <div class="earn-grid">
+        <div class="earn"><span class="who">Pet owners</span><h3>Your pet goes viral, you get paid</h3><ul><li>0.3% of every curve trade on your pet's coin</li><li>Paw Pool rewards for Top 10 pets each season</li><li>3% royalty on your pet's NFT Meme collection</li></ul></div>
+        <div class="earn"><span class="who">Voters</span><h3>Pick winners, share the pool</h3><ul><li>Stake $PET to vote — your stake is never spent</li><li>Back the winning pet → share the voter Paw Pool</li><li>Early access to Hall-of-Fame NFT drops</li></ul></div>
+        <div class="earn"><span class="who">$PET holders</span><h3>The whole zoo works for you</h3><ul><li>0.5% of curve trades fund treasury & $PET buyback</li><li>Bought-back $PET is burned</li><li>50% off launch & campaign fees paid in $PET</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- $PET TOKEN -->
+  <section id="token">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">🪙 $PET</span>
+          <h2>The token that feeds the zoo</h2>
+          <p>$PET is the native currency of petcoin.fun: stake it to vote, use it to pay fees, earn it when your pet goes viral.</p>
+        </div>
+      </div>
+      <div class="pet-grid">
+        <div class="util-grid" id="utilGrid"></div>
+        <div class="pet-panel">
+          <h3><img src="assets/art/logo.svg" alt="">PET Coin <span class="muted" style="font-size:1rem">$PET</span></h3>
+          <div id="petStats"></div>
+          <div class="chain-rows" id="chainRows"></div>
+          <div class="row-actions"><button class="btn btn-primary" data-action="open-copy" style="flex:1">📋 Copy CA</button><a class="btn" href="docs.html#token">Tokenomics</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section id="fees" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">💸 Fees</span>
+          <h2>Simple, transparent fees</h2>
+          <p>Launchpad-standard pricing. No hidden taxes on tokens — every fee is listed here and on-chain.</p>
+        </div>
+      </div>
+      <table class="fee-table">
+        <thead><tr><th>Action</th><th>Fee</th><th>Details</th></tr></thead>
+        <tbody id="feeBody"></tbody>
+      </table>
+      <p style="margin:26px 0 6px;font-weight:800">Where the 1% bonding-curve trade fee goes</p>
+      <div class="split">
+        <div style="flex:5;background:var(--yellow)">50% Treasury & buyback</div>
+        <div style="flex:3;background:var(--mint)">30% Pet owner</div>
+        <div style="flex:2;background:var(--pink);color:#fff">20% Paw Pool</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="kicker">🗺️ Roadmap</span><h2>From puppy to Best in Show</h2></div></div>
+      <div class="road" id="roadGrid"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="kicker">❓ FAQ</span><h2>Good questions, good boys</h2></div></div>
+      <div class="faq" data-tpl>
+        <details><summary>What is petcoin.fun?</summary><p>A meme coin launchpad built around real pets. Owners Memeify their pets, the community votes with {ticker}, and the most-loved pets launch their own coins on a fair bonding curve on {netName}.</p></details>
+        <details><summary>Which chains are supported?</summary><p>{netName}. {caInfo}.</p></details>
+        <details><summary>How do I get {ticker}?</summary><p>Install {wallets}, fund it with {native}, copy the official CA from the top of this page and swap on {aggregator}. We never show a Buy button — always paste the CA yourself.</p></details>
+        <details><summary>How much does it cost to launch a pet coin?</summary><p>Creation costs {launchFee} plus network gas. Pay in {ticker} for 50% off. Trading on the curve has a 1% fee, shared with the pet owner and the Paw Pool.</p></details>
+        <details><summary>What is the bonding curve?</summary><p>Every new pet coin starts on an automated price curve: price rises as people buy and falls as they sell. When market cap hits {gradCap}, liquidity is moved to {dex} and the LP is burned.</p></details>
+        <details><summary>Is this financial advice?</summary><p>No. Meme coins are extremely volatile and can go to zero. Only use money you can afford to lose and always verify contract addresses on {x}.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="wrap">
+    <div class="cta">
+      <div class="pets"><img src="assets/art/cat.svg" alt=""><img src="assets/art/dog.svg" alt=""><img src="assets/art/hamster.svg" alt=""></div>
+      <h2>Your pet is already a meme.<br>Make it a coin.</h2>
+      <p>Join the pack on X for launch day, Memeify seasons and Paw Pool drops.</p>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="#" data-launch data-action="open-launch">🚀 Launch Your Pet Coin</a>
+        <a class="btn btn-lg" href="#" data-x-link target="_blank" rel="noopener">Follow <span data-x-handle></span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
+      <p class="muted" style="color:#cfc6dc;margin-top:12px">The pet meme coin launchpad. Vote · Launch · Earn with $PET on <span data-v="netName"></span>.</p>
+    </div>
+    <div><h4>Platform</h4><a href="#explore">Explore</a><a href="#new">New launches</a><a href="#memeify">Memeify</a><a href="#fees">Fees</a></div>
+    <div><h4>Learn</h4><a href="docs.html">Docs</a><a href="docs.html#start">Getting started</a><a href="docs.html#token">$PET token</a><a href="docs.html#safety">Safety</a></div>
+    <div><h4>Community</h4><a href="#" data-x-link target="_blank" rel="noopener">X <span data-x-handle></span></a><a href="#" data-tg-link target="_blank" rel="noopener" hidden>Telegram</a><a href="#" data-action="open-copy">Copy $PET CA</a></div>
+    <div class="disc">© <span data-year></span> petcoin.fun · $PET is a community meme token with no intrinsic value or expectation of financial return. Pet coins listed on this page are third-party tokens shown from public market data — not endorsements. Crypto is risky: DYOR.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-x" data-action="close-modal" aria-label="Close">×</button><div id="modalBody"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/config.js"></script>
+<script src="js/chain.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/common.js"></script>
+<script src="js/market.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs — petcoin.fun | How to Memeify, launch & earn with $PET</title>
+<meta name="description" content="petcoin.fun documentation: getting started, Memeify campaigns, launching a pet coin, bonding curve, $PET tokenomics, fees, Meme-to-Earn and safety.">
+<link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="topbar"><div class="marquee" id="marquee"></div></div>
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#explore">Explore</a>
+      <a href="index.html#memeify">Memeify</a>
+      <a href="index.html#token">$PET</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="docs.html" class="active">Docs</a>
+    </nav>
+    <div class="head-actions">
+      <span class="net-badge" id="netBadge"></span>
+      <button class="btn btn-primary btn-sm" id="walletBtn" data-action="open-connect">Connect</button>
+      <button class="menu-btn" data-action="toggle-nav" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <aside class="docs-nav" id="docsNav">
+    <h4>Basics</h4>
+    <a href="#intro">Introduction</a>
+    <a href="#start">Getting started</a>
+    <a href="#networks">Networks & CA</a>
+    <h4>Platform</h4>
+    <a href="#memeify">Memeify campaigns</a>
+    <a href="#voting">Voting</a>
+    <a href="#launch">Launching a pet coin</a>
+    <a href="#curve">Bonding curve & graduation</a>
+    <a href="#nft">NFT Meme collections</a>
+    <h4>Token</h4>
+    <a href="#token">$PET token</a>
+    <a href="#fees">Fees</a>
+    <a href="#earn">Meme-to-Earn</a>
+    <h4>More</h4>
+    <a href="#safety">Safety & verification</a>
+    <a href="#data">Market data</a>
+    <a href="#faq">FAQ</a>
+    <a href="#glossary">Glossary</a>
+  </aside>
+
+  <div class="doc-body" data-tpl>
+    <article id="intro">
+      <div class="doc-hero">
+        <div class="pets"><img src="assets/art/dog.svg" alt=""><img src="assets/art/cat.svg" alt=""><img src="assets/art/hamster.svg" alt=""></div>
+        <div><span class="kicker">📚 Docs</span><h1 style="margin-top:10px">Welcome to petcoin.fun</h1></div>
+      </div>
+      <p><b>petcoin.fun</b> is a meme coin launchpad where every coin starts with a real pet. Owners <b>Memeify</b> their dogs, cats and other animals, the community votes for the funniest moments with <b>{ticker}</b>, and the most-loved pets launch their own coins on a fair bonding curve.</p>
+      <p>The platform runs on <b>{netName}</b>. {ticker} ({name}) is the native token: it's used to stake votes, pay launch fees at a discount, and reward the owners of viral pets.</p>
+      <div class="callout">🐾 <b>In one line:</b> Upload your pet → the community votes → your pet gets a coin → you earn when it goes viral.</div>
+      <h3>Why petcoin.fun?</h3>
+      <ul>
+        <li><b>Real pets, real owners.</b> Coins are tied to verified pet owners, not stolen images.</li>
+        <li><b>Fair launch.</b> Every pet coin starts on a bonding curve — no presale, no team allocation.</li>
+        <li><b>Owners get paid.</b> 0.3% of every curve trade on a pet's coin goes to its owner.</li>
+        <li><b>Community-first.</b> Voters who back winners share the Paw Pool.</li>
+      </ul>
+    </article>
+
+    <article id="start">
+      <h2>🚀 Getting started</h2>
+      <h3>1. Get a wallet</h3>
+      <p>Install {wallets}.{walletNote}</p>
+      <h3>2. Fund it</h3>
+      <p>Buy {native} on an exchange and withdraw it to your wallet on the correct network ({netName}). Keep a little extra for gas.</p>
+      <h3>3. Connect to petcoin.fun</h3>
+      <p>Click <b>Connect</b> in the top-right corner, pick your network and wallet, and approve the connection. Your {ticker} balance is read live from the chain.</p>
+      <h3>4. Get {ticker}</h3>
+      <p>Click <b>Copy CA</b> on the homepage, paste the address into {aggregator} and swap. We intentionally never show a "Buy" button — always paste the official CA yourself.</p>
+      <div class="callout warn">⚠️ Always double-check the network. Sending tokens on the wrong chain can lose them permanently.</div>
+    </article>
+
+    <article id="networks">
+      <h2>🌐 Networks & contract addresses</h2>
+      <p>{caInfo}.</p>
+      <table><thead><tr><th>Network</th><th>Type</th><th>{ticker} contract</th><th>DEX</th></tr></thead><tbody id="netTable"></tbody></table>
+      <p class="muted small">Contract addresses are read from the site config. "Coming soon" means the official CA has not been published yet — anything you see elsewhere is fake.</p>
+    </article>
+
+    <article id="memeify">
+      <h2>📸 Memeify campaigns</h2>
+      <p>A <b>Memeify campaign</b> is a 72-hour contest for one funny moment of your pet: a photo, a GIF or a short clip.</p>
+      <ol>
+        <li><b>Verify your pet</b> once: connect your wallet, upload 3 photos of your pet and post a verification code on X. One pet = one owner wallet.</li>
+        <li><b>Create the campaign</b>: choose the moment, write a caption and pick a season theme. Fee: <b>{campaignFee}</b> (50% off in {ticker}).</li>
+        <li><b>Share it</b>: your campaign gets a page and a share card for X. Votes from your community count.</li>
+        <li><b>Results</b>: after 72h, campaigns are ranked by staked votes. Top 10 pets of each season get the fee refunded in {ticker}, a Hall-of-Fame badge and Paw Pool rewards.</li>
+      </ol>
+      <h3>Season themes</h3>
+      <p>Zoomies Week · Derp Faces · Costume Contest · Sleepy Bois · Food Thieves · Bath Time Drama. New themes are voted by {ticker} holders.</p>
+      <div class="callout warn">Content rules: no animal harm, no stolen photos, no NSFW. Campaigns breaking the rules are removed and the fee is not refunded.</div>
+    </article>
+
+    <article id="voting">
+      <h2>🗳️ Voting</h2>
+      <p>Voting uses <b>stake-to-vote</b>: you lock {ticker} on a campaign for its duration. Your tokens are <b>never spent</b> — they unlock automatically when the campaign ends.</p>
+      <ul>
+        <li>Minimum stake: <b>100 {ticker}</b> per vote.</li>
+        <li>Vote weight = amount staked. One wallet can back several pets.</li>
+        <li>Voters who backed a Top 10 pet share the voter half of the Paw Pool, pro-rata to their stake.</li>
+        <li>Anti-bot: wallets must hold {ticker} for at least 24h before voting.</li>
+      </ul>
+    </article>
+
+    <article id="launch">
+      <h2>🪄 Launching a pet coin</h2>
+      <p>Any verified pet can get its own coin. Campaign winners get a featured launch slot on the homepage.</p>
+      <ol>
+        <li>Open the launchpad and pick your verified pet.</li>
+        <li>Set <b>name</b>, <b>ticker</b>, image and links (X, Telegram, website).</li>
+        <li>Choose the network ({netShort}) and pay the creation fee: <b>{launchFee}</b> + gas. Pay in {ticker} for 50% off.</li>
+        <li>Optional: make the first buy in the same transaction to avoid snipers.</li>
+        <li>Your coin is live on the bonding curve instantly. Share the page!</li>
+      </ol>
+      <table><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Total supply</td><td>1,000,000,000 per pet coin</td></tr>
+        <tr><td>Sold on curve</td><td>80%</td></tr>
+        <tr><td>Reserved for DEX liquidity</td><td>20% (added at graduation)</td></tr>
+        <tr><td>Team / presale allocation</td><td>None</td></tr>
+        <tr><td>Mint / freeze authority</td><td>Revoked at creation</td></tr>
+      </tbody></table>
+    </article>
+
+    <article id="curve">
+      <h2>📈 Bonding curve & graduation</h2>
+      <p>Every pet coin starts on an automated market maker called a <b>bonding curve</b>. Price is a function of how many tokens have been sold: it rises as people buy and falls as they sell. There is no order book and no need for initial liquidity.</p>
+      <div class="formula">price = virtualReserve<sub>{native}</sub> ÷ virtualReserve<sub>token</sub><br>progress = marketCap ÷ {gradCap}</div>
+      <h3>Graduation</h3>
+      <p>When a coin's market cap reaches <b>{gradCap}</b>, it <b>graduates</b>:</p>
+      <ul>
+        <li>The curve closes and the collected {native} plus the reserved 20% supply are added as liquidity on <b>{dex}</b>.</li>
+        <li>A graduation fee of <b>{gradFee}</b> is taken from curve liquidity.</li>
+        <li>The LP tokens are <b>burned</b>, so liquidity can never be pulled.</li>
+      </ul>
+      <div class="callout">On the homepage, the progress bar on each token card shows market cap ÷ {gradCap}. Coins past the cap show 🎓.</div>
+    </article>
+
+    <article id="nft">
+      <h2>🖼️ NFT Meme collections</h2>
+      <p>The Top 10 pets of each season get a limited <b>NFT Meme collection</b> made from their winning moments.</p>
+      <ul>
+        <li>Collections are minted on the pet's coin network.</li>
+        <li>{ticker} holders and winning voters get an early mint window.</li>
+        <li>Secondary royalty: <b>5%</b> — 3% to the pet owner, 2% to the Paw Pool.</li>
+        <li>Part of every season's Paw Pool is donated to animal shelters.</li>
+      </ul>
+    </article>
+
+    <article id="token">
+      <h2>🪙 {ticker} token</h2>
+      <p><b>{name}</b> ({ticker}) is the native token of petcoin.fun on {netName}.</p>
+      <table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody id="tokoTable"></tbody></table>
+      <h3>Utility</h3>
+      <ul id="utilList"></ul>
+    </article>
+
+    <article id="fees">
+      <h2>💸 Fees</h2>
+      <p>Fees are in line with other meme launchpads. Native-currency fees are per network.</p>
+      <table><thead><tr><th>Action</th><th>Fee</th><th>Details</th></tr></thead><tbody id="feeTable"></tbody></table>
+      <h3>Curve trade fee split (1%)</h3>
+      <table><thead><tr><th>Recipient</th><th>Share</th></tr></thead><tbody>
+        <tr><td>Treasury & {ticker} buyback/burn</td><td>0.5%</td></tr>
+        <tr><td>Pet owner</td><td>0.3%</td></tr>
+        <tr><td>Paw Pool (owners, voters, shelters)</td><td>0.2%</td></tr>
+      </tbody></table>
+    </article>
+
+    <article id="earn">
+      <h2>🦴 Meme-to-Earn</h2>
+      <h3>Pet owners</h3>
+      <ul><li>0.3% of every bonding-curve trade on their pet's coin, claimable any time.</li><li>Paw Pool rewards when their pet makes the seasonal Top 10.</li><li>3% royalty on their pet's NFT Meme collection.</li></ul>
+      <h3>Voters</h3>
+      <ul><li>Share 50% of the seasonal Paw Pool when backing Top 10 pets.</li><li>Stake is never spent.</li></ul>
+      <h3>{ticker} holders</h3>
+      <ul><li>Treasury buybacks reduce circulating supply.</li><li>50% discount on all launchpad fees paid in {ticker}.</li></ul>
+      <div class="callout warn">Rewards depend on real platform activity. Nothing on petcoin.fun guarantees profit.</div>
+    </article>
+
+    <article id="safety">
+      <h2>🛡️ Safety & verification</h2>
+      <ul>
+        <li><b>Only trust official CAs</b> — shown on this site and on {x}.</li>
+        <li>The team will <b>never DM you</b> first or ask for your seed phrase.</li>
+        <li>Check the contract on the explorer before trading any pet coin.</li>
+        <li>Pet coins listed on the homepage are third-party tokens from public market data, not endorsements.</li>
+        <li>New coins are extremely volatile. Use small amounts and take profits.</li>
+      </ul>
+      <div class="callout danger">🚫 If someone asks for your private key or seed phrase, it is a scam. Always.</div>
+    </article>
+
+    <article id="data">
+      <h2>📊 Market data</h2>
+      <p>The Explore, Recently launched, Communities and Stats sections use live public data from the <b>DexScreener API</b>, filtered to pet-themed tokens (dog, cat, inu, kitty, hamster…) on {netName} with at least $3K liquidity. Data refreshes every 60 seconds.</p>
+      <p>{ticker} supply and wallet balances are read directly on-chain through public RPC endpoints.</p>
+    </article>
+
+    <article id="faq">
+      <h2>❓ FAQ</h2>
+      <h3>Is there a presale?</h3><p>No. {ticker} and every pet coin are fair launches.</p>
+      <h3>Can I launch a coin for a pet that isn't mine?</h3><p>No. Pet coins require a verified owner wallet. Reported copycats are delisted from the site.</p>
+      <h3>Which network should I use?</h3><p>{netName}. Pick the one your wallet and friends already use — fees and speed differ slightly.</p>
+      <h3>Why is there no Buy button?</h3><p>To protect you from fake links. Copy the CA and paste it into the DEX yourself.</p>
+      <h3>When does the launchpad open?</h3><p>Follow {x} for launch dates and Memeify season announcements.</p>
+    </article>
+
+    <article id="glossary">
+      <h2>📖 Glossary</h2>
+      <dl class="gloss">
+        <dt>CA</dt><dd>Contract address — the unique on-chain address of a token.</dd>
+        <dt>Bonding curve</dt><dd>A pricing formula that sells tokens automatically; price rises with demand.</dd>
+        <dt>Graduation</dt><dd>When a pet coin reaches {gradCap} market cap and moves to a DEX.</dd>
+        <dt>Paw Pool</dt><dd>Seasonal reward pool for top pet owners, winning voters and shelters.</dd>
+        <dt>Memeify</dt><dd>A 72h campaign where the community votes on a pet's funniest moment.</dd>
+        <dt>LP burn</dt><dd>Destroying liquidity-provider tokens so liquidity can never be removed.</dd>
+        <dt>DYOR</dt><dd>Do your own research.</dd>
+      </dl>
+    </article>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><a class="brand" href="index.html"><img src="assets/art/logo.svg" alt=""><span>petcoin<em>.fun</em></span></a><p style="color:#cfc6dc;margin-top:12px">The pet meme coin launchpad.</p></div>
+    <div><h4>Platform</h4><a href="index.html#explore">Explore</a><a href="index.html#memeify">Memeify</a><a href="index.html#fees">Fees</a></div>
+    <div><h4>Docs</h4><a href="#start">Getting started</a><a href="#launch">Launch</a><a href="#token">$PET</a></div>
+    <div><h4>Community</h4><a href="#" data-x-link target="_blank" rel="noopener">X <span data-x-handle></span></a><a href="#" data-tg-link target="_blank" rel="noopener" hidden>Telegram</a></div>
+    <div class="disc">© <span data-year></span> petcoin.fun · $PET is a community meme token with no intrinsic value or expectation of financial return. DYOR.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-x" data-action="close-modal" aria-label="Close">×</button><div id="modalBody"></div></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/config.js"></script>
+<script src="js/chain.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/common.js"></script>
+<script src="js/docs.js"></script>
+</body>
+</html>
