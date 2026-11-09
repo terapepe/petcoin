@@ -18,7 +18,7 @@ window.PET_CONFIG = {
    *"multi"
    *"single" (solana | robinhood | base | bsc)
    */
-  mode: "multi",
+  mode: "single",
   singleNetwork: "solana",
 
   /** CA tab shown first in multi mode */
