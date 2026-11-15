@@ -9,8 +9,8 @@ window.PET_CONFIG = {
   },
 
   social: {
-    x: "https://x.com/PetCoinFun",
-    xHandle: "@PetCoinFun",
+    x: "https://x.com/petcoindotfun",
+    xHandle: "@petcoindotfun",
     telegram: "",
   },
 
@@ -18,16 +18,16 @@ window.PET_CONFIG = {
    *"multi"
    *"single" (solana | robinhood | base | bsc)
    */
-  mode: "multi",
-  singleNetwork: "solana",
+  mode: "single",
+  singleNetwork: "robinhood",
 
   /** CA tab shown first in multi mode */
-  primaryNetwork: "solana",
+  primaryNetwork: "robinhood",
 
   /** $PET CA: Robinhood, Base, BSC share `evm`; Solana uses `sol`. "" = Coming soon */
   token: {
-    evm: "0xF8C195cd334e6A323F736934ad52A6863afF56EA",
-    sol: "Cc1pq2iZ5fVaeC1GhLAXGEJwDDurMDxjw1FLzgXYE6ea",
+    evm: "",
+    sol: "",
   },
 
   /** Launchpad app URL. "" = pressing Launch shows "Launchpad opening soon" */
