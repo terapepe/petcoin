@@ -1,9 +1,9 @@
 window.PET_CONFIG = {
   project: {
     brand: "petcoin.fun",
-    name: "PET Coin",
-    ticker: "$PET",
-    symbol: "PET",
+    name: "PETCoin",
+    ticker: "$PETC",
+    symbol: "PETC",
     tagline: "Turn your pet into a meme. Turn the meme into a coin.",
     decimalsFallback: 18,
   },
@@ -14,23 +14,15 @@ window.PET_CONFIG = {
     telegram: "",
   },
 
-  /**
-   *"multi"
-   *"single" (solana | robinhood | base | bsc)
-   */
   mode: "single",
   singleNetwork: "robinhood",
-
-  /** CA tab shown first in multi mode */
   primaryNetwork: "robinhood",
 
-  /** $PET CA: Robinhood, Base, BSC share `evm`; Solana uses `sol`. "" = Coming soon */
   token: {
-    evm: "",
+    evm: "0x97E58B3EA5E313d00F0F2403ceA232c63761fAb6",
     sol: "",
   },
 
-  /** Launchpad app URL. "" = pressing Launch shows "Launchpad opening soon" */
   launchpad: {
     appUrl: "",
     /** Trading fee options the creator can pick (buy = sell, %) */
