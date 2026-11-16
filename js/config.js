@@ -1,9 +1,9 @@
 window.PET_CONFIG = {
   project: {
     brand: "petcoin.fun",
-    name: "PETCoin",
-    ticker: "$PETC",
-    symbol: "PETC",
+    name: "petcoindotfun",
+    ticker: "$PET",
+    symbol: "PET",
     tagline: "Turn your pet into a meme. Turn the meme into a coin.",
     decimalsFallback: 18,
   },
@@ -19,7 +19,7 @@ window.PET_CONFIG = {
   primaryNetwork: "robinhood",
 
   token: {
-    evm: "",
+    evm: "0x5bDfd00c7F91701e4905930E7975FdD059E20612",
     sol: "",
   },
 
