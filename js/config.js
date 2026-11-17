@@ -19,7 +19,7 @@ window.PET_CONFIG = {
   primaryNetwork: "robinhood",
 
   token: {
-    evm: "",
+    evm: "0x4906c461Cd8E395E379859434a573Ba2dBE14801",
     sol: "",
   },
 
