@@ -15,7 +15,7 @@ window.PET_CONFIG = {
   },
 
   mode: "single",
-  singleNetwork: "robinhood",
+  singleNetwork: "base",
   primaryNetwork: "robinhood",
 
   token: {
