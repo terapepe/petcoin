@@ -15,11 +15,11 @@ window.PET_CONFIG = {
   },
 
   mode: "single",
-  singleNetwork: "base",
+  singleNetwork: "robinhood",
   primaryNetwork: "robinhood",
 
   token: {
-    evm: "0x4906c461Cd8E395E379859434a573Ba2dBE14801",
+    evm: "",
     sol: "",
   },
 
